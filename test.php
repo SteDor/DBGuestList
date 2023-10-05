@@ -6,8 +6,11 @@
     $password = '123';
     $databasename = 'PartyDB';
 
-    $db = new Database('localhost', 'Sepax', '123', 'PartyDB');
+    $db = new Database($servername , $username, $password, $databasename);
 
     $db->createDatabase($servername, $username, $password, $databasename);
+
+    echo ('Server: ' . $servername . '<br>User: ' . $username . '<br> PW: ' 
+        . $password . '<br>Database Name: ' . $databasename);
 
 ?>

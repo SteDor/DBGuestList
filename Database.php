@@ -1,15 +1,8 @@
 <?php 
 class Database {
-    public $servername ='';
-    public $username='';
-    public $password='';
-    public $databasename='';
-    
-    function __construct($servername , $username, $password, $databasename){
-        $servername -> servername;
-        $username-> username;
-        $password-> password;
-        $databasename-> databasename;
+  
+    function __construct(public $servername, public $username, public $password, public $databasename){
+        
 
     }
 
@@ -25,9 +18,9 @@ class Database {
         // Create database 
         $sql = "CREATE DATABASE $databasename";
         if ($conn->query($sql) === TRUE) {
-          echo ('<br>Database: ' . $databasename .  'was created successfully');
+          echo ('<br>Database: ' . $databasename .  'was created successfully<br><br>');
         } else {
-          echo "<br>Error creating database: " . $conn->error;
+          echo "<br>Error creating database: <br>" . $conn->error;
         }
 
         $conn->close();    
