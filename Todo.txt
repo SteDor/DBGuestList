@@ -1,0 +1,9 @@
++class Database Helper
+
++add more rows
+
++create column with foreign Key
+
++Insert Data loop 1row -n rows
+
++get last ID
