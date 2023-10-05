@@ -59,7 +59,10 @@ class Database {
         die("Connection failed: " . mysqli_connect_error());
       }
       // sql to create table
-      $sql = ('ALTER TABLE ' . $tablename . ' ADD ' . $infoArray[0] . ' ' . $infoArray[2] . ' NOT NULL AFTER ' . $infoArray[1]); 
+      $sql = ('ALTER TABLE ' . $tablename . 
+      ' ADD ' . $infoArray[0] . 
+      ' ' . $infoArray[2] . ' NOT NULL AFTER ' 
+      . $infoArray[1]); 
       
       
 
@@ -72,9 +75,56 @@ class Database {
       mysqli_close($conn);
 
     }
+
+    // Add column to an existing table in the DB
+    public function addColumn($servername, $username, $password, $databasename, $tablename, $addColumn, $sqlInfoString){
+      $conn = mysqli_connect($servername, $username, $password, $databasename);
+      // make $infoArray for  Sql Statement
+      
+      $infoArray = explode('|',$sqlInfoString);
+
+      echo ('add to: ' . $addColumn);
+
+      // for testing
+      for ($i = 0; $i < count($infoArray); $i++)
+        {
+          echo($infoArray[$i].", ");
+        }
+        echo("</br>");
+        echo('size = ' . count($infoArray). '<br>');
+
+      if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+      }
+      // sql to create multiple columns
+      for ($count = 0; $count < count($infoArray); $count+=2){
+        echo('count = ' . $count . '<br>');
+
+        $sql = ('ALTER TABLE ' . $tablename         //name of table
+        . ' ADD ' . $infoArray[$count] . ' '                //name of column
+        . $infoArray[$count + 1] . ' NOT NULL AFTER '   //type
+        . $addColumn);                  //column to add
+      
+        if (mysqli_query($conn, $sql)) {
+          echo ('Adedd column '. $infoArray[$count] . ' to table ' 
+          . $tablename . ' after column ' .  $addColumn . '<br>');
+        } else {
+          echo ('No Columns added') . mysqli_error($conn);
+        }
+        
+        
+        
+        
+        //echo ('Adedd column '. $infoArray[$count] . ' to table ' . $tablename . ' after column ' .  $addColumn . '<br>');
+      
+
+      $addColumn = $infoArray[$count];
+      
+      }
+
+      mysqli_close($conn);
+    }  
     
-
-
 
 }
 ?>

@@ -11,13 +11,18 @@
     echo ('Server: ' . $servername . '<br>User: ' . $username . '<br> PW: ' 
         . $password . '<br>Database Name: ' . $databasename . '<br>');
 
+
+
+    // Typs for Test - INT - VARCHAR(60) - DATE - TEXT
+
+
     //create DB test
         // $db->createDatabase($servername, $username, $password, $databasename);
     //create Table
     // Tabelname has to be one Word without space 
-        // $db->createTable($servername , $username, $password, $databasename, 'Guest_List'); 
+    // $db->createTable($servername , $username, $password, $databasename, 'Guest_List'); 
     // add columns with name of table and anarray for the SQL statement(Name of table | Name of column where to add new column | Type of column)
-    $db-> addColumns($servername , $username, $password, $databasename, 'Guest_List', 'Kurt|ID|INT');
+    // $db-> addColumn($servername , $username, $password, $databasename, 'Guest_List', 'Kurt|ID|INT');
 
-
+    $db-> addColumn($servername , $username, $password, $databasename, 'Guest_List', 'ID', 'Preis|INT|String|VARCHAR(60)');
 ?>
