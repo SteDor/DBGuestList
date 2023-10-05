@@ -54,6 +54,7 @@ class Database {
     }
 
     // Add column to an existing table in the DB
+    // useless!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public function addColumn($servername, $username, $password, $databasename, $tablename, $sqlInfoString){
       $conn = mysqli_connect($servername, $username, $password, $databasename);
       // make $sqlInfoString to Array for sql statement
