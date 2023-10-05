@@ -5,11 +5,6 @@ class Database {
         
 
     }
-    public function checkConnection($conn) {
-      if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-      }
-    }
 
     // ceate new database if user exist in PhpMyAdmin 
     // u can name your database with this function
